@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Cooking Recipes</string>
+    <string name="signInOption_text">Entrar</string>
+    <string name="signUpOption_text">Cadastrar-se</string>
+    <string name="userName_text">Nome</string>
+    <string name="userEmail_text">E-mail</string>
+    <string name="userPassword_text">Senha</string>
+    <string name="userConfirmPassword_text">Repetir senha</string>
+    <string name="signIn_text">Acessar</string>
+    <string name="signUp_text">Cadastrar</string>
+    <string name="signUpRedirect_text_1">Já é cadastrado?</string>
+    <string name="signUpRedirect_text_2">Acesse aqui</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello!</string>
+</resources>

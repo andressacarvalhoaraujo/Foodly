@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E5E5E5"
+    tools:context=".view.SignInActivity"
+    android:fillViewport="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#E5E5E5"
+        tools:context=".view.SignInActivity">
+
+        <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="310dp"
+            android:layout_gravity="center"
+            card_view:cardBackgroundColor="#FFFFFF"
+            card_view:cardCornerRadius="20dp"
+            card_view:cardElevation="40dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter"
+                android:src="@drawable/background_logo"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/signInOption"
+                style="?android:attr/borderlessButtonStyle"
+                android:visibility="visible"
+                android:layout_width="140dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="45dp"
+                android:layout_marginTop="265dp"
+                android:text="@string/signInOption_text"
+                android:textColor="#213B55" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/signUpOption"
+                style="?android:attr/borderlessButtonStyle"
+                android:visibility="visible"
+                android:layout_width="140dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="227dp"
+                android:layout_marginTop="265dp"
+                android:background="@drawable/button_custom_1"
+                android:text="@string/signUpOption_text"
+                android:textColor="#213B55" />
+
+        </androidx.cardview.widget.CardView>
+
+        <EditText
+            android:id="@+id/userName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cardView"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_custom_1"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/quicksand_regular"
+            android:hint="@string/userName_text"
+            android:paddingLeft="30dp"
+            android:paddingTop="15dp"
+            android:paddingRight="30dp"
+            android:paddingBottom="15dp"
+            android:textColor="#93CCFB"
+            android:textColorHint="#93CCFB" />
+
+
+        <EditText
+            android:id="@+id/userEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userName"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_custom_1"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/quicksand_regular"
+            android:hint="@string/userEmail_text"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:textColor="#93CCFB"
+            android:textColorHint="#93CCFB" />
+
+        <EditText
+            android:id="@+id/userPassword"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userEmail"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_custom_1"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/quicksand_regular"
+            android:hint="@string/userPassword_text"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:textColor="#93CCFB"
+            android:textColorHint="#93CCFB"/>
+
+        <EditText
+            android:id="@+id/userConfirmPassword"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userPassword"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_custom_1"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/quicksand_regular"
+            android:hint="@string/userConfirmPassword_text"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:textColor="#93CCFB"
+            android:textColorHint="#93CCFB"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/signUp"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_below="@id/userConfirmPassword"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="#1F98C4"
+            android:text="@string/signUp_text"
+            android:textColor="#FFFFFF"
+            app:cornerRadius="40dp" />
+
+        <LinearLayout
+            android:id="@+id/signInRedirect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/signUp"
+            android:layout_marginTop="18dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/signUpRedirectText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand_regular"
+                android:text="@string/signUpRedirect_text_1"
+                android:textColor="#697D90" />
+
+            <Button
+                android:id="@+id/signUpRedirect"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:padding="5dp"
+                android:backgroundTint="#E5E5E5"
+                android:fontFamily="@font/quicksand_bold"
+                android:text="@string/signUpRedirect_text_2"
+                android:textAllCaps="false"
+                android:textColor="#697D90" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</ScrollView>

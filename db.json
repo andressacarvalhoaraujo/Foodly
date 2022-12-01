@@ -1,0 +1,166 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Administrator",
+      "email": "admin@mail.com",
+      "password": "12345678",
+      "perfilImage": "",
+      "biography": ""
+    },
+    {
+      "password": "123456",
+      "perfilImage": "",
+      "name": "Jean Lopes",
+      "biography": "",
+      "email": "jean.lopes@gmail.com",
+      "id": 2
+    },
+    {
+      "password": "123456",
+      "perfilImage": "",
+      "name": "Joana Darc",
+      "biography": "",
+      "email": "joana.darc@gmail.com",
+      "id": 3
+    },
+    {
+      "password": "123456",
+      "perfilImage": "",
+      "name": "Madonna",
+      "biography": "",
+      "email": "madonnad@outlook.com",
+      "id": 4
+    },
+    {
+      "password": "123456",
+      "perfilImage": "",
+      "name": "Lady Gugu",
+      "biography": "",
+      "email": "ladyyy@gmail.com",
+      "id": 5
+    },
+    {
+      "password": "123456",
+      "perfilImage": "",
+      "name": "Madonna",
+      "biography": "",
+      "email": "madonnadi@outlook.com",
+      "id": 6
+    },
+    {
+      "password": "123456",
+      "perfilImage": "",
+      "name": "Madelene Silva",
+      "biography": "",
+      "email": "madelene_silva@outlook.com",
+      "id": 7
+    },
+    {
+      "password": "123456",
+      "perfilImage": "",
+      "name": "Alice Cena",
+      "biography": "",
+      "email": "a.cena@mail.com",
+      "id": 8
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Lanches"
+    },
+    {
+      "id": 2,
+      "name": "Bebidas"
+    },
+    {
+      "id": 3,
+      "name": "Fast-food"
+    },
+    {
+      "id": 4,
+      "name": "Doces e bolos"
+    },
+    {
+      "id": 5,
+      "name": "Brasileira"
+    },
+    {
+      "id": 6,
+      "name": "Saudável"
+    },
+    {
+      "id": 7,
+      "name": "Sorvetes e açaí"
+    },
+    {
+      "id": 8,
+      "name": "Variada"
+    },
+    {
+      "id": 9,
+      "name": "Japonesa"
+    },
+    {
+      "id": 10,
+      "name": "Chinesa"
+    },
+    {
+      "id": 11,
+      "name": "Italiana"
+    },
+    {
+      "id": 12,
+      "name": "Padaria"
+    },
+    {
+      "id": 13,
+      "name": "Vegana"
+    },
+    {
+      "id": 14,
+      "name": "Mexicana"
+    },
+    {
+      "id": 15,
+      "name": "Árabe"
+    },
+    {
+      "id": 16,
+      "name": "Frutos do mar"
+    }
+  ],
+  "culinaryRecipes": [
+    {
+      "id": 1,
+      "userId": 1,
+      "categoryId": 10,
+      "title": "Yakisoba fácil",
+      "recipeImage": "https://s2.glbimg.com/axZGck-WeA2ilRh_xl4Mm-k1tPM=/0x0:1280x800/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_1f540e0b94d8437dbbc39d567a1dee68/internal_photos/bs/2022/B/Z/1PKLDySoCbbNqApJuF0A/yakisoba-facil-receita.jpg",
+      "description": "De origem chinesa, o yakisoba se tornou bastante popular na culinária japonesa. Simples e fácil de fazer, é uma sugestão rápida, prática e econômica para almoço e jantar.",
+      "ingredients": "250 gramas de macarrão para yakisoba \n 150 gramas de filé de frango em cubos \n 1 xícara de chá de cenoura em rodelas \n Meia xícara de chá de shoyu \n Meia xícara de chá de brócolis picado \n 1 xícara de chá de repolho em cubos \n Sal a gosto",
+      "preparationMode": "Em uma panela, coloque 150 gramas de filé de frango em cubos, e frite até dourar. \n Depois, adicione 1 xícara de chá de cenoura em rodelas, e refogue por 3 minutos. \n Acrescente meia xícara de chá de shoyu, e deixe ferver por 3 minutos. \n Adicione meia xícara de chá de brócolis, 1 xícara de chá de repolho em cubos, e sal a gosto. Misture. \n Em outra panela, coloque 250 gramas de macarrão para yakisoba a ferver em água. Cozinhe até ficar al dente. \n Escorra o macarrão e misture com o molho na panela. Sirva em seguida.",
+      "generalRating": 4.9,
+      "difficultyLevel": "Fácil",
+      "preparationTime": 30,
+      "yield": 3,
+      "totalCalories": 175
+    }
+  ],
+  "favoriteCulinaryRecipes": [
+    {
+      "id": 1,
+      "userId": 1,
+      "culinaryRecipeId": 1
+    }
+  ],
+  "ratingCulinaryRecipes": [
+    {
+      "id": 1,
+      "userId": 1,
+      "culinaryRecipeId": 1,
+      "rating": 4
+    }
+  ]
+}
