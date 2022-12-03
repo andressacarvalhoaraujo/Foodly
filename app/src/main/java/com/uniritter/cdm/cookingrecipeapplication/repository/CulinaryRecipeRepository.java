@@ -98,7 +98,7 @@ public class CulinaryRecipeRepository {
         if (userId == 0 || title == null || TextUtils.isEmpty(title) || title == description || TextUtils.isEmpty(description)
                 || ingredients == null || TextUtils.isEmpty(ingredients) || preparationMode == null || TextUtils.isEmpty(preparationMode)
                 || difficultyLevelId == 0 || preparationTime == 0 || yield == 0) {
-            presenter.onResult(new RequestHelper(true, RequestType.NotAcceptable, "Preencha todos os campos."));
+            presenter.onResultCulinaryRecipe(new RequestHelper(true, RequestType.NotAcceptable, "Preencha todos os campos."));
         } else {
             JSONObject obj = new JSONObject();
             obj.put("userId", userId);
@@ -130,12 +130,12 @@ public class CulinaryRecipeRepository {
                                         response.getInt("totalCalories")
                                 ));
 
-                                presenter.onResult(new RequestHelper(true, RequestType.OK));
+                                presenter.onResultCulinaryRecipe(new RequestHelper(true, RequestType.OK));
                             } catch (JSONException e) {
                                 Log.e(TAG, "Error on add culinary recipe! Returned message: " + e.getMessage());
                                 e.printStackTrace();
 
-                                presenter.onResult(new RequestHelper(false, RequestType.BadRequest, e.getMessage()));
+                                presenter.onResultCulinaryRecipe(new RequestHelper(false, RequestType.BadRequest, e.getMessage()));
                             }
                         }
                     }, new Response.ErrorListener() {
@@ -144,7 +144,7 @@ public class CulinaryRecipeRepository {
                     Log.e(TAG, "Error on add culinary recipe! Returned message: " + error.getMessage());
                     error.printStackTrace();
 
-                    presenter.onResult(new RequestHelper(false, RequestType.BadRequest, error.getMessage()));
+                    presenter.onResultCulinaryRecipe(new RequestHelper(false, RequestType.BadRequest, error.getMessage()));
                 }
             });
 

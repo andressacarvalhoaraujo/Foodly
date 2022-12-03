@@ -17,6 +17,8 @@ import com.uniritter.cdm.cookingrecipeapplication.model.ICulinaryRecipeModel;
 import com.uniritter.cdm.cookingrecipeapplication.presenter.CulinaryRecipePresenter;
 import com.uniritter.cdm.cookingrecipeapplication.presenter.CulinaryRecipePresenterContract;
 
+import org.json.JSONException;
+
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity implements CulinaryRecipePresenterContract.View {
@@ -60,12 +62,22 @@ public class HomeActivity extends AppCompatActivity implements CulinaryRecipePre
     }
 
     @Override
-    public void onCall() {
+    public void onCallCulinaryRecipe() {
 
     }
 
     @Override
-    public void onResult(RequestHelper result) {
+    public void onResultCulinaryRecipe(RequestHelper result) {
+
+    }
+
+    @Override
+    public void onCallFavoriteCulinaryRecipe() throws JSONException {
+
+    }
+
+    @Override
+    public void onResultFavoriteCulinaryRecipe(RequestHelper result) {
 
     }
 

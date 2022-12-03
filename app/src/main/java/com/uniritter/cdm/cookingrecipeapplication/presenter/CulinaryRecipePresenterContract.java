@@ -5,6 +5,7 @@ import android.app.Activity;
 import com.uniritter.cdm.cookingrecipeapplication.helper.RequestHelper;
 import com.uniritter.cdm.cookingrecipeapplication.model.ICulinaryRecipeModel;
 import com.uniritter.cdm.cookingrecipeapplication.model.IDifficultyLevelModel;
+import com.uniritter.cdm.cookingrecipeapplication.model.IFavoriteCulinaryRecipeModel;
 
 import org.json.JSONException;
 
@@ -12,9 +13,13 @@ import java.util.List;
 
 public class CulinaryRecipePresenterContract {
     public interface View {
-        void onCall() throws JSONException;
+        void onCallCulinaryRecipe() throws JSONException;
 
-        void onResult(RequestHelper result);
+        void onResultCulinaryRecipe(RequestHelper result);
+
+        void onCallFavoriteCulinaryRecipe() throws JSONException;
+
+        void onResultFavoriteCulinaryRecipe(RequestHelper result);
 
         Activity getActivity();
     }
@@ -27,5 +32,13 @@ public class CulinaryRecipePresenterContract {
         IDifficultyLevelModel getDifficultyLevelById(int difficultyLevelId);
 
         List<IDifficultyLevelModel> getAllDifficultyLevels();
+
+        IFavoriteCulinaryRecipeModel getFavoriteCulinaryRecipeByUserIdAndCulinaryRecipeId(int userId, int culinaryRecipeId);
+
+        List<IFavoriteCulinaryRecipeModel> getFavoriteCulinaryRecipesByUserId(int userId);
+
+        void addFavoriteCulinaryRecipe(int userId, int culinaryRecipeId) throws JSONException;
+
+        void deleteFavoriteCulinaryRecipe(int favoriteCulinaryRecipeId);
     }
 }

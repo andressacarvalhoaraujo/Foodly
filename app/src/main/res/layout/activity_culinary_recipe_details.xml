@@ -53,27 +53,46 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_below="@+id/titleText"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/titleText"
         android:layout_gravity="bottom"
         android:padding="20dp"
         app:cardBackgroundColor="#FFFFFF"
         app:cardCornerRadius="20dp"
         app:cardElevation="40dp">
 
+        <ImageButton
+            android:id="@+id/favorite"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="80dp"
+            android:background="@drawable/button_custom_3" />
+
+        <ImageButton
+            android:id="@+id/next"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/button_custom_3"
+            android:src="@drawable/ic_baseline_fast_forward_24" />
+
         <TextView
             android:id="@+id/descriptionText"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:gravity="left"
+            android:text="@string/description_text"
             android:textColor="#213B55"
             android:textSize="20dp"
-            android:textStyle="bold"
-            android:text="@string/description_text"/>
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -91,8 +110,8 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_marginTop="160dp"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/preparationTimeText"
@@ -117,8 +136,8 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_marginTop="160dp"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/yieldText"
@@ -147,10 +166,10 @@
             android:layout_marginTop="280dp"
             android:layout_marginBottom="20dp"
             android:gravity="left"
+            android:text="@string/ingredients_text"
             android:textColor="#213B55"
             android:textSize="20dp"
-            android:textStyle="bold"
-            android:text="@string/ingredients_text"/>
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -172,10 +191,10 @@
             android:layout_marginTop="460dp"
             android:layout_marginBottom="20dp"
             android:gravity="left"
+            android:text="@string/preparationMode_text"
             android:textColor="#213B55"
             android:textSize="20dp"
-            android:textStyle="bold"
-            android:text="@string/preparationMode_text"/>
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -74,12 +74,19 @@
   ],
   "favoriteCulinaryRecipes": [
     {
+      "id": 1,
       "userId": 1,
       "culinaryRecipeId": 1
+    },
+    {
+      "userId": 3,
+      "culinaryRecipeId": 2,
+      "id": 2
     }
   ],
   "nextCulinaryRecipes": [
     {
+      "id": 1,
       "userId": 1,
       "culinaryRecipeId": 2
     }

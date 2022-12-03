@@ -99,7 +99,7 @@ public class CulinaryRecipeAddActivity extends AppCompatActivity implements Culi
             btnCreate.setEnabled(false);
 
             try {
-                onCall();
+                onCallCulinaryRecipe();
             } catch (JSONException e) {
                 Toast.makeText(CulinaryRecipeAddActivity.this, "Ocorreu um erro inesperado! Tente novamente mais tarde.", Toast.LENGTH_SHORT).show();
                 Log.e(TAG, "Error on add culinary recipe! Returned message: " + e.getMessage());
@@ -109,14 +109,14 @@ public class CulinaryRecipeAddActivity extends AppCompatActivity implements Culi
     }
 
     @Override
-    public void onCall() throws JSONException {
+    public void onCallCulinaryRecipe() throws JSONException {
         presenter.addCulinaryRecipe(this.userId, this.title, this.description,
                 this.ingredients, this.preparationMode, this.difficultyLevelId,
                 this.preparationTime, this.yield, this.totalCalories);
     }
 
     @Override
-    public void onResult(RequestHelper result) {
+    public void onResultCulinaryRecipe(RequestHelper result) {
         if (result.type == RequestType.OK) {
             Log.d(TAG, "Add culinary recipe success.");
             Toast.makeText(CulinaryRecipeAddActivity.this, "Receita cadastrada com sucesso!", Toast.LENGTH_SHORT).show();
@@ -133,6 +133,16 @@ public class CulinaryRecipeAddActivity extends AppCompatActivity implements Culi
             Log.e(TAG, "Error on add culinary recipe! Returned message: " + result.errorMessage);
             Toast.makeText(CulinaryRecipeAddActivity.this, "Ocorreu um erro ao cadastrar a receita! " + result.errorMessage, Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public void onCallFavoriteCulinaryRecipe() throws JSONException {
+
+    }
+
+    @Override
+    public void onResultFavoriteCulinaryRecipe(RequestHelper result) {
+
     }
 
     private ArrayList<String> getAllDifficultyLevels() {
