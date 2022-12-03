@@ -10,6 +10,14 @@
     <string name="signUp_text">Cadastrar</string>
     <string name="signUpRedirect_text_1">Já é cadastrado?</string>
     <string name="signUpRedirect_text_2">Acesse aqui</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello!</string>
+    <string name="description_text">Descrição</string>
+    <string name="ingredients_text">Ingredientes</string>
+    <string name="preparationMode_text">Modo de preparo</string>
+    <string name="newCulinaryRecipe_text">Nova receita</string>
+    <string name="culinaryRecipeTitle_text">Título</string>
+    <string name="preparationTime_text">Tempo de preparo</string>
+    <string name="yield_text">Porções</string>
+    <string name="totalCalories_text">Total de calorias</string>
+    <string name="create_text">Criar</string>
+    <string name="wait_text">Aguarde um instante...</string>
 </resources>

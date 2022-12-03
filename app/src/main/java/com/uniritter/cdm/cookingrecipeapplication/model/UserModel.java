@@ -8,8 +8,6 @@ public class UserModel implements IUserModel, Parcelable {
     private String userName;
     private String userEmail;
     private String userPassword;
-    private String userPerfilImage;
-    private String userBiography;
 
     public UserModel(int userId, String userName, String userEmail, String userPassword) {
         this.userId = userId;
@@ -18,22 +16,11 @@ public class UserModel implements IUserModel, Parcelable {
         this.userPassword = userPassword;
     }
 
-    public UserModel(int userId, String userName, String userEmail, String userPassword, String userPerfilImage, String userBiography) {
-        this.userId = userId;
-        this.userName = userName;
-        this.userEmail = userEmail;
-        this.userPassword = userPassword;
-        this.userPerfilImage = userPerfilImage;
-        this.userBiography = userBiography;
-    }
-
     protected UserModel(Parcel in) {
         userId = in.readInt();
         userName = in.readString();
         userEmail = in.readString();
         userPassword = in.readString();
-        userPerfilImage = in.readString();
-        userBiography = in.readString();
     }
 
     public static final Creator<UserModel> CREATOR = new Creator<UserModel>() {
@@ -69,12 +56,6 @@ public class UserModel implements IUserModel, Parcelable {
     }
 
     @Override
-    public String getUserPerfilImage() { return this.userPerfilImage; }
-
-    @Override
-    public String getUserBiography() { return this.userBiography; }
-
-    @Override
     public void setUserId(int userId) {
         this.userId = userId;
     }
@@ -95,16 +76,6 @@ public class UserModel implements IUserModel, Parcelable {
     }
 
     @Override
-    public void setUserPerfilImage(String userPerfilImage) {
-        this.userPerfilImage = userPerfilImage;
-    }
-
-    @Override
-    public void setUserBiography(String userBiography) {
-        this.userBiography = userBiography;
-    }
-
-    @Override
     public int describeContents() {
         return 0;
     }
@@ -115,8 +86,6 @@ public class UserModel implements IUserModel, Parcelable {
         parcel.writeString(userName);
         parcel.writeString(userEmail);
         parcel.writeString(userPassword);
-        parcel.writeString(userPerfilImage);
-        parcel.writeString(userBiography);
     }
 }
 

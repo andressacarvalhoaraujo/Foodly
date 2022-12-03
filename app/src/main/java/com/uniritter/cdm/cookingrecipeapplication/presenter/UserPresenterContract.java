@@ -11,12 +11,12 @@ public class UserPresenterContract {
 
         void onResult(RequestHelper result);
 
-        void saveUserCredentials(int userId, String userName, String userEmail, String userPassword);
-
         Activity getActivity();
     }
 
     public interface Presenter {
+        IUserModel getUserById(int userId);
+
         IUserModel getUserByEmail(String userEmail);
 
         void doLogin(String userEmail, String userPassword);

@@ -9,10 +9,6 @@ public interface IUserModel {
 
     String getUserPassword();
 
-    String getUserPerfilImage();
-
-    String getUserBiography();
-
     void setUserId(int userId);
 
     void setUserName(String userName);
@@ -20,8 +16,4 @@ public interface IUserModel {
     void setUserEmail(String userEmail);
 
     void setUserPassword(String userPassword);
-
-    void setUserPerfilImage(String userPerfilImage);
-
-    void setUserBiography(String userBiography);
 }

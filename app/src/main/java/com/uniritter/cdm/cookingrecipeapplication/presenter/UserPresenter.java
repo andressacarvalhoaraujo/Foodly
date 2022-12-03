@@ -14,6 +14,11 @@ public class UserPresenter implements UserPresenterContract.Presenter, IUserPres
     }
 
     @Override
+    public IUserModel getUserById(int userId) {
+        return this.repository.getUserById(userId);
+    }
+
+    @Override
     public IUserModel getUserByEmail(String userEmail) {
         return this.repository.getUserByEmail(userEmail);
     }

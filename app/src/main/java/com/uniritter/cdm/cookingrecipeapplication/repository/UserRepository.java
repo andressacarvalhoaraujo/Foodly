@@ -17,7 +17,6 @@ import com.uniritter.cdm.cookingrecipeapplication.helper.RequestType;
 import com.uniritter.cdm.cookingrecipeapplication.model.IUserModel;
 import com.uniritter.cdm.cookingrecipeapplication.model.UserModel;
 import com.uniritter.cdm.cookingrecipeapplication.presenter.IUserPresenter;
-import com.uniritter.cdm.cookingrecipeapplication.presenter.UserPresenter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,6 +27,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class UserRepository {
+    private static String TAG = "UserRepository";
     private IUserModel user;
     private List<IUserModel> users;
     private Context context;
@@ -64,11 +64,10 @@ public class UserRepository {
                                         json.getInt("id"),
                                         json.getString("name"),
                                         json.getString("email"),
-                                        json.getString("password"),
-                                        json.getString("perfilImage"),
-                                        json.getString("biography")
+                                        json.getString("password")
                                 ));
                             } catch (JSONException e) {
+                                Log.e(TAG, "Error on get users! Returned message: " + e.getMessage());
                                 e.printStackTrace();
                             }
 
@@ -78,15 +77,24 @@ public class UserRepository {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.e("UserRepository", "Error! Returned message: " + error.getMessage());
+                        Log.e(TAG, "Error on get users! Returned message: " + error.getMessage());
                     }
                 });
 
         this.queue.add(jaRequest);
     }
 
-    public IUserModel getCurrentUser() {
-        return this.user;
+    public IUserModel getUserById(int userId) {
+        IUserModel u = null;
+
+        for(IUserModel us : this.users) {
+            if (userId == us.getUserId()) {
+                u = us;
+                break;
+            }
+        }
+
+        return u;
     }
 
     public IUserModel getUserByEmail(String userEmail) {
@@ -119,43 +127,51 @@ public class UserRepository {
     }
 
     public void addUser(String userName, String userEmail, String userPassword, String userPasswordConfirm, IUserPresenter presenter) {
-        HashMap<String, String> params = new HashMap<String, String>();
-        params.put("name", userName);
-        params.put("email", userEmail);
-        params.put("password", userPassword);
-        params.put("perfilImage", "");
-        params.put("biography", "");
+        if (userName == null || TextUtils.isEmpty(userName) || userEmail == null || TextUtils.isEmpty(userEmail) ||
+                userPassword == null || TextUtils.isEmpty(userPassword) || userPasswordConfirm == null || TextUtils.isEmpty(userPasswordConfirm)) {
+            presenter.onResult(new RequestHelper(true, RequestType.NotAcceptable, "Preencha todos os campos."));
+        } else {
+            if (userPassword != userPasswordConfirm) {
+                presenter.onResult(new RequestHelper(true, RequestType.Conflict, "As senhas são diferentes."));
+            } else {
+                HashMap<String, String> params = new HashMap<String, String>();
+                params.put("name", userName);
+                params.put("email", userEmail);
+                params.put("password", userPassword);
 
-        JsonObjectRequest req = new JsonObjectRequest(Request.Method.POST, "http://10.0.0.193:3000/users", new JSONObject(params),
-                new Response.Listener<JSONObject>() {
+                JsonObjectRequest req = new JsonObjectRequest(Request.Method.POST, "http://10.0.0.193:3000/users", new JSONObject(params),
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                try {
+                                    Log.d(TAG, "Success on add user! Response: " + response.toString(4));
+                                    users.add(new UserModel(
+                                            response.getInt("id"),
+                                            response.getString("name"),
+                                            response.getString("email"),
+                                            response.getString("password")
+                                    ));
+
+                                    presenter.onResult(new RequestHelper(true, RequestType.OK));
+                                } catch (JSONException e) {
+                                    Log.e(TAG, "Error on add user! Returned message: " + e.getMessage());
+                                    e.printStackTrace();
+
+                                    presenter.onResult(new RequestHelper(false, RequestType.BadRequest, e.getMessage()));
+                                }
+                            }
+                        }, new Response.ErrorListener() {
                     @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            Log.d("UserRepository", "Success! Response: " + response.toString(4));
-                            users.add(new UserModel(
-                                    response.getInt("id"),
-                                    response.getString("name"),
-                                    response.getString("email"),
-                                    response.getString("password"),
-                                    response.getString("perfilImage"),
-                                    response.getString("biography")
-                            ));
-                            presenter.onResult(new RequestHelper(true, RequestType.OK));
-                        } catch (JSONException e) {
-                            Log.e("UserRepository", "Error! Returned message: " + e.getMessage());
-                            e.printStackTrace();
-                            presenter.onResult(new RequestHelper(false, RequestType.BadRequest, e.getMessage()));
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e("UserRepository", "Error! Returned message: " + error.getMessage());
-                error.printStackTrace();
-                presenter.onResult(new RequestHelper(false, RequestType.BadRequest, error.getMessage()));
-            }
-        });
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e(TAG, "Error on add user! Returned message: " + error.getMessage());
+                        error.printStackTrace();
 
-        this.queue.add(req);
+                        presenter.onResult(new RequestHelper(false, RequestType.BadRequest, error.getMessage()));
+                    }
+                });
+
+                this.queue.add(req);
+            }
+        }
     }
 }

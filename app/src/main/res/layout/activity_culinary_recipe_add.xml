@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="#036E95"
+tools:context=".view.CulinaryRecipeAddActivity"
+android:fillViewport="true">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#036E95">
+
+    <TextView
+        android:id="@+id/addText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="85dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="right"
+        android:text="@string/newCulinaryRecipe_text"
+        android:textColor="#FFFFFF"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/back"
+        android:layout_width="60dp"
+        android:layout_height="70dp"
+        android:layout_gravity="right"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#FFFFFF"
+        app:cornerRadius="40dp"
+        app:icon="@drawable/ic_baseline_arrow_back_24"
+        app:iconGravity="textTop"
+        app:iconTint="#1F98C4" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/addText"
+        android:layout_gravity="bottom"
+        android:padding="20dp"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="40dp">
+
+        <EditText
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_custom_2"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/quicksand_regular"
+            android:hint="@string/culinaryRecipeTitle_text"
+            android:paddingLeft="30dp"
+            android:paddingTop="15dp"
+            android:paddingRight="30dp"
+            android:paddingBottom="15dp"
+            android:textColor="#93CCFB"
+            android:textColorHint="#93CCFB" />
+
+        <EditText
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="95dp"
+            android:layout_below="@id/title"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="87dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_custom_2"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/quicksand_regular"
+            android:hint="@string/description_text"
+            android:paddingLeft="30dp"
+            android:paddingTop="15dp"
+            android:paddingRight="30dp"
+            android:paddingBottom="15dp"
+            android:textColor="#93CCFB"
+            android:textColorHint="#93CCFB" />
+
+        <EditText
+            android:id="@+id/preparationTime"
+            android:digits="0123456789"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/description"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="191dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_custom_2"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/quicksand_regular"
+            android:hint="@string/preparationTime_text"
+            android:inputType="number"
+            android:paddingLeft="30dp"
+            android:paddingTop="15dp"
+            android:paddingRight="30dp"
+            android:paddingBottom="15dp"
+            android:textColor="#93CCFB"
+            android:textColorHint="#93CCFB" />
+
+        <Spinner
+            android:id="@+id/difficultyLevel"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/preparationTime"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="255dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_custom_2"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/quicksand_regular"
+            android:paddingLeft="30dp"
+            android:paddingTop="15dp"
+            android:paddingRight="30dp"
+            android:paddingBottom="15dp"
+            android:textColor="#93CCFB" />
+
+        <EditText
+            android:id="@+id/yield"
+            android:digits="0123456789"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/difficultyLevel"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="315dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_custom_2"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/quicksand_regular"
+            android:hint="@string/yield_text"
+            android:inputType="number"
+            android:paddingLeft="30dp"
+            android:paddingTop="15dp"
+            android:paddingRight="30dp"
+            android:paddingBottom="15dp"
+            android:textColor="#93CCFB"
+            android:textColorHint="#93CCFB" />
+
+        <EditText
+            android:id="@+id/totalCalories"
+            android:digits="0123456789"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/yield"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="379dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_custom_2"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/quicksand_regular"
+            android:hint="@string/totalCalories_text"
+            android:inputType="number"
+            android:paddingLeft="30dp"
+            android:paddingTop="15dp"
+            android:paddingRight="30dp"
+            android:paddingBottom="15dp"
+            android:textColor="#93CCFB"
+            android:textColorHint="#93CCFB" />
+
+        <EditText
+            android:id="@+id/ingredients"
+            android:layout_width="match_parent"
+            android:layout_height="95dp"
+            android:layout_below="@id/totalCalories"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="442dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_custom_2"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/quicksand_regular"
+            android:hint="@string/ingredients_text"
+            android:paddingLeft="30dp"
+            android:paddingTop="15dp"
+            android:paddingRight="30dp"
+            android:paddingBottom="15dp"
+            android:textColor="#93CCFB"
+            android:textColorHint="#93CCFB" />
+
+        <EditText
+            android:id="@+id/preparationMode"
+            android:layout_width="match_parent"
+            android:layout_height="95dp"
+            android:layout_below="@id/ingredients"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="545dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_custom_2"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/quicksand_regular"
+            android:hint="@string/preparationMode_text"
+            android:paddingLeft="30dp"
+            android:paddingTop="15dp"
+            android:paddingRight="30dp"
+            android:paddingBottom="15dp"
+            android:textColor="#93CCFB"
+            android:textColorHint="#93CCFB" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/create"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="650dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="#1F98C4"
+            android:text="@string/create_text"
+            android:textColor="#FFFFFF"
+            app:cornerRadius="40dp" />
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
+</ScrollView>

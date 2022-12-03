@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -19,6 +20,7 @@ import com.uniritter.cdm.cookingrecipeapplication.presenter.UserPresenter;
 import com.uniritter.cdm.cookingrecipeapplication.presenter.UserPresenterContract;
 
 public class SignUpActivity extends AppCompatActivity implements UserPresenterContract.View {
+    private static String TAG = "SignUpActivity";
     private String userName, userEmail, userPassword, userConfirmPassword;
     private UserPresenterContract.Presenter presenter;
 
@@ -55,18 +57,20 @@ public class SignUpActivity extends AppCompatActivity implements UserPresenterCo
 
             this.saveUserCredentials(user.getUserId(), user.getUserName(), user.getUserEmail(), user.getUserPassword());
 
+            Log.d(TAG, "Sign up success!");
+
             Intent intent = new Intent(SignUpActivity.this, HomeActivity.class);
             intent.putExtra("userObject", (Parcelable) user);
             startActivity(intent);
             finish();
         } else
         {
+            Log.e(TAG, "Error on sign up! Returned message: " + result.errorMessage);
             Toast.makeText(SignUpActivity.this, "O cadastro falhou! " + result.errorMessage, Toast.LENGTH_SHORT).show();
         }
     }
 
-    @Override
-    public void saveUserCredentials(int userId, String userName, String userEmail, String userPassword) {
+    private void saveUserCredentials(int userId, String userName, String userEmail, String userPassword) {
         SharedPreferences sharedPreferences = getSharedPreferences("userCredentials", MODE_PRIVATE);
 
         if (userId != 0

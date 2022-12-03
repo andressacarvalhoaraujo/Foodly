@@ -20,6 +20,7 @@ import com.uniritter.cdm.cookingrecipeapplication.presenter.UserPresenter;
 import com.uniritter.cdm.cookingrecipeapplication.presenter.UserPresenterContract;
 
 public class SignInActivity extends AppCompatActivity implements UserPresenterContract.View {
+    private static String TAG = "SignInActivity";
     private String userEmail, userPassword;
     private UserPresenterContract.Presenter presenter;
 
@@ -66,18 +67,20 @@ public class SignInActivity extends AppCompatActivity implements UserPresenterCo
 
             this.saveUserCredentials(user.getUserId(), user.getUserName(), user.getUserEmail(), user.getUserPassword());
 
+            Log.d(TAG, "Sign in success!");
+
             Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
             intent.putExtra("userObject", (Parcelable) user);
             startActivity(intent);
             finish();
         } else
         {
+            Log.e(TAG, "Error on sign in! Returned message: " + result.errorMessage);
             Toast.makeText(SignInActivity.this, "O login falhou! " + result.errorMessage, Toast.LENGTH_SHORT).show();
         }
     }
 
-    @Override
-    public void saveUserCredentials(int userId, String userName, String userEmail, String userPassword) {
+    private void saveUserCredentials(int userId, String userName, String userEmail, String userPassword) {
         SharedPreferences sharedPreferences = getSharedPreferences("userCredentials", MODE_PRIVATE);
 
         if (userId != 0
