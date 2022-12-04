@@ -8,6 +8,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.uniritter.cdm.cookingrecipeapplication.R;
@@ -23,6 +26,7 @@ import java.util.List;
 
 public class HomeActivity extends AppCompatActivity implements CulinaryRecipePresenterContract.View {
     private CulinaryRecipePresenterContract.Presenter presenter;
+    private boolean isUserCulinaryRecipes = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,7 @@ public class HomeActivity extends AppCompatActivity implements CulinaryRecipePre
         setContentView(R.layout.activity_home);
 
         SharedPreferences sharedPreferences = getSharedPreferences("userCredentials", MODE_PRIVATE);
+        int userId = sharedPreferences.getInt("userId", 0);
         String userName = sharedPreferences.getString("userName", "");
 
         TextView welcomeText = findViewById(R.id.welcomeText);
@@ -49,11 +54,34 @@ public class HomeActivity extends AppCompatActivity implements CulinaryRecipePre
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         rv.setLayoutManager(llm);
 
+        findViewById(R.id.search).setOnKeyListener(new EditText.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                String filter = ((EditText) findViewById(R.id.search)).getText().toString();
+                adapter.filterData(filter);
+
+                if (keyCode == KeyEvent.KEYCODE_BACK)
+                    return true;
+
+                return false;
+            }
+        });
+
         findViewById(R.id.signOut).setOnClickListener(view -> {
             sharedPreferences.edit().clear().apply();
 
             startActivity(new Intent(HomeActivity.this, SignInActivity.class));
             finish();
+        });
+
+        findViewById(R.id.userCulinaryRecipes).setOnClickListener(view -> {
+            isUserCulinaryRecipes = !this.isUserCulinaryRecipes;
+
+            if (isUserCulinaryRecipes) {
+                adapter.getDataByUserId(userId);
+            } else {
+                adapter.getDataByUserId(0);
+            }
         });
 
         findViewById(R.id.addCulinaryRecipe).setOnClickListener(view -> {
@@ -78,6 +106,16 @@ public class HomeActivity extends AppCompatActivity implements CulinaryRecipePre
 
     @Override
     public void onResultFavoriteCulinaryRecipe(RequestHelper result) {
+
+    }
+
+    @Override
+    public void onCallNextCulinaryRecipe() throws JSONException {
+
+    }
+
+    @Override
+    public void onResultNextCulinaryRecipe(RequestHelper result) {
 
     }
 

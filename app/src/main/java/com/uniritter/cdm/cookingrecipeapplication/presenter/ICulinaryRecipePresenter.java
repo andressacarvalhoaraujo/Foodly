@@ -6,4 +6,6 @@ public interface ICulinaryRecipePresenter {
     void onResultCulinaryRecipe(RequestHelper requestHelper);
 
     void onResultFavoriteCulinaryRecipe(RequestHelper requestHelper);
+
+    void onResultNextCulinaryRecipe(RequestHelper requestHelper);
 }

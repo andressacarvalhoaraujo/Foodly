@@ -10,6 +10,7 @@
     <string name="signUp_text">Cadastrar</string>
     <string name="signUpRedirect_text_1">Já é cadastrado?</string>
     <string name="signUpRedirect_text_2">Acesse aqui</string>
+    <string name="search_text">Pesquisar</string>
     <string name="description_text">Descrição</string>
     <string name="ingredients_text">Ingredientes</string>
     <string name="preparationMode_text">Modo de preparo</string>

@@ -145,6 +145,16 @@ public class CulinaryRecipeAddActivity extends AppCompatActivity implements Culi
 
     }
 
+    @Override
+    public void onCallNextCulinaryRecipe() throws JSONException {
+
+    }
+
+    @Override
+    public void onResultNextCulinaryRecipe(RequestHelper result) {
+
+    }
+
     private ArrayList<String> getAllDifficultyLevels() {
         ArrayList<String> dln = new ArrayList<>();
         dln.add("Selecione a dificuldade");

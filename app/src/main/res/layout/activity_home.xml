@@ -7,27 +7,46 @@
     android:background="#036E95"
     tools:context=".view.HomeActivity">
 
-    <TextView
-        android:id="@+id/welcomeText"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/search"
+        android:layout_width="265dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginBottom="20dp"
-        android:textColor="#FFFFFF"
-        android:textSize="20dp"
-        android:textStyle="bold" />
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/edit_text_custom_1"
+        android:drawablePadding="10dp"
+        android:fontFamily="@font/quicksand_regular"
+        android:hint="@string/search_text"
+        android:paddingLeft="30dp"
+        android:paddingTop="15dp"
+        android:paddingRight="30dp"
+        android:paddingBottom="15dp"
+        android:textColor="#93CCFB"
+        android:textColorHint="#93CCFB" />
 
     <ImageButton
         android:id="@+id/signOut"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_gravity="right"
-        android:layout_marginStart="320dp"
+        android:layout_marginStart="305dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/button_custom_2"
         android:backgroundTint="#FFFFFF"
         android:src="@drawable/signout_icon" />
+
+    <TextView
+        android:id="@+id/welcomeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="20dp"
+        android:text="Olá, Cuzilda!"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -41,7 +60,7 @@
         app:cardElevation="40dp">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/listCulinaryRecipes"
+            android:id="@+id/userCulinaryRecipes"
             android:layout_width="60dp"
             android:layout_height="70dp"
             android:layout_gravity="left"

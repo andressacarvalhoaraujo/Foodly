@@ -4,9 +4,11 @@ import com.uniritter.cdm.cookingrecipeapplication.helper.RequestHelper;
 import com.uniritter.cdm.cookingrecipeapplication.model.ICulinaryRecipeModel;
 import com.uniritter.cdm.cookingrecipeapplication.model.IDifficultyLevelModel;
 import com.uniritter.cdm.cookingrecipeapplication.model.IFavoriteCulinaryRecipeModel;
+import com.uniritter.cdm.cookingrecipeapplication.model.INextCulinaryRecipeModel;
 import com.uniritter.cdm.cookingrecipeapplication.repository.CulinaryRecipeRepository;
 import com.uniritter.cdm.cookingrecipeapplication.repository.DifficultyLevelRepository;
 import com.uniritter.cdm.cookingrecipeapplication.repository.FavoriteCulinaryRecipeRepository;
+import com.uniritter.cdm.cookingrecipeapplication.repository.NextCulinaryRecipeRepository;
 
 import org.json.JSONException;
 
@@ -17,12 +19,14 @@ public class CulinaryRecipePresenter implements CulinaryRecipePresenterContract.
     private CulinaryRecipeRepository culinaryRecipeRepository;
     private DifficultyLevelRepository difficultyLevelRepository;
     private FavoriteCulinaryRecipeRepository favoriteCulinaryRecipeRepository;
+    private NextCulinaryRecipeRepository nextCulinaryRecipeRepository;
 
     public CulinaryRecipePresenter(CulinaryRecipePresenterContract.View view) {
         this.view = view;
         this.culinaryRecipeRepository = CulinaryRecipeRepository.getInstance(view.getActivity());
         this.difficultyLevelRepository = DifficultyLevelRepository.getInstance(view.getActivity());
         this.favoriteCulinaryRecipeRepository = FavoriteCulinaryRecipeRepository.getInstance(view.getActivity());
+        this.nextCulinaryRecipeRepository = NextCulinaryRecipeRepository.getInstance(view.getActivity());
     }
 
     @Override
@@ -56,6 +60,16 @@ public class CulinaryRecipePresenter implements CulinaryRecipePresenterContract.
     }
 
     @Override
+    public INextCulinaryRecipeModel getNextCulinaryRecipeByUserIdAndCulinaryRecipeId(int userId, int culinaryRecipeId) {
+        return this.nextCulinaryRecipeRepository.getNextCulinaryRecipeByUserIdAndCulinaryRecipeId(userId, culinaryRecipeId);
+    }
+
+    @Override
+    public List<INextCulinaryRecipeModel> getNextCulinaryRecipesByUserId(int userId) {
+        return this.nextCulinaryRecipeRepository.getNextCulinaryRecipesByUserId(userId);
+    }
+
+    @Override
     public void addFavoriteCulinaryRecipe(int userId, int culinaryRecipeId) throws JSONException {
         this.favoriteCulinaryRecipeRepository.addFavoriteCulinaryRecipe(userId, culinaryRecipeId, this);
     }
@@ -66,6 +80,16 @@ public class CulinaryRecipePresenter implements CulinaryRecipePresenterContract.
     }
 
     @Override
+    public void addNextCulinaryRecipe(int userId, int culinaryRecipeId) throws JSONException {
+        this.nextCulinaryRecipeRepository.addNextCulinaryRecipe(userId, culinaryRecipeId, this);
+    }
+
+    @Override
+    public void deleteNextCulinaryRecipe(int nextCulinaryRecipeId) {
+        this.nextCulinaryRecipeRepository.deleteNextCulinaryRecipe(nextCulinaryRecipeId, this);
+    }
+
+    @Override
     public void onResultCulinaryRecipe(RequestHelper requestHelper) {
         this.view.onResultCulinaryRecipe(requestHelper);
     }
@@ -73,5 +97,10 @@ public class CulinaryRecipePresenter implements CulinaryRecipePresenterContract.
     @Override
     public void onResultFavoriteCulinaryRecipe(RequestHelper requestHelper) {
         this.view.onResultFavoriteCulinaryRecipe(requestHelper);
+    }
+
+    @Override
+    public void onResultNextCulinaryRecipe(RequestHelper requestHelper) {
+        this.view.onResultNextCulinaryRecipe(requestHelper);
     }
 }

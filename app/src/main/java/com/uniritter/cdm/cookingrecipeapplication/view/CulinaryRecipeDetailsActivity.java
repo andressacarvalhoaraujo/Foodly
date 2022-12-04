@@ -22,6 +22,7 @@ import com.uniritter.cdm.cookingrecipeapplication.helper.RequestType;
 import com.uniritter.cdm.cookingrecipeapplication.model.ICulinaryRecipeModel;
 import com.uniritter.cdm.cookingrecipeapplication.model.IDifficultyLevelModel;
 import com.uniritter.cdm.cookingrecipeapplication.model.IFavoriteCulinaryRecipeModel;
+import com.uniritter.cdm.cookingrecipeapplication.model.INextCulinaryRecipeModel;
 import com.uniritter.cdm.cookingrecipeapplication.model.IUserModel;
 import com.uniritter.cdm.cookingrecipeapplication.presenter.CulinaryRecipePresenter;
 import com.uniritter.cdm.cookingrecipeapplication.presenter.CulinaryRecipePresenterContract;
@@ -41,7 +42,9 @@ public class CulinaryRecipeDetailsActivity extends AppCompatActivity implements 
     private List<ICulinaryRecipeModel> culinaryRecipes = new ArrayList<>();
     private int userId;
     private int favoriteCulinaryRecipeId;
+    private int nextCulinaryRecipeId;
     private boolean isFavoriteCulinaryRecipe;
+    private boolean isNextCulinaryRecipe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +61,7 @@ public class CulinaryRecipeDetailsActivity extends AppCompatActivity implements 
         this.culinaryRecipes.add(this.culinaryRecipe);
 
         this.checkFavoriteCulinaryRecipe();
+        this.checkNextCulinaryRecipe();
 
         this.getData();
 
@@ -112,6 +116,16 @@ public class CulinaryRecipeDetailsActivity extends AppCompatActivity implements 
                 e.printStackTrace();
             }
         });
+
+        findViewById(R.id.next).setOnClickListener(view -> {
+            try {
+                onCallNextCulinaryRecipe();
+            } catch (JSONException e) {
+                Toast.makeText(CulinaryRecipeDetailsActivity.this, "Ocorreu um erro inesperado! Tente novamente mais tarde.", Toast.LENGTH_SHORT).show();
+                Log.e(TAG, "Error on add culinary recipe to next! Returned message: " + e.getMessage());
+                e.printStackTrace();
+            }
+        });
     }
 
     private void checkFavoriteCulinaryRecipe() {
@@ -127,6 +141,22 @@ public class CulinaryRecipeDetailsActivity extends AppCompatActivity implements 
             btnImg.setImageResource(R.drawable.ic_baseline_favorite_border_24);
 
             this.isFavoriteCulinaryRecipe = false;
+        }
+    }
+
+    private void checkNextCulinaryRecipe() {
+        INextCulinaryRecipeModel nextCulinaryRecipe = this.culinaryRecipePresenter.getNextCulinaryRecipeByUserIdAndCulinaryRecipeId(this.userId, this.culinaryRecipe.getCulinaryRecipeId());
+        ImageButton btnImg = (ImageButton) findViewById(R.id.next);
+
+        if (nextCulinaryRecipe != null) {
+            btnImg.setImageResource(R.drawable.ic_baseline_fast_rewind_24);
+
+            this.nextCulinaryRecipeId = nextCulinaryRecipe.getNextCulinaryRecipeId();
+            this.isNextCulinaryRecipe = true;
+        } else {
+            btnImg.setImageResource(R.drawable.ic_baseline_fast_forward_24);
+
+            this.isNextCulinaryRecipe = false;
         }
     }
 
@@ -195,6 +225,39 @@ public class CulinaryRecipeDetailsActivity extends AppCompatActivity implements 
             } else {
                 Log.e(TAG, "Error on add culinary recipe to favorites success.");
                 Toast.makeText(CulinaryRecipeDetailsActivity.this, "Ocorreu um erro ao adicionar a receita aos favoritos! " + result.errorMessage, Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    @Override
+    public void onCallNextCulinaryRecipe() throws JSONException {
+        if (this.isNextCulinaryRecipe) {
+            this.culinaryRecipePresenter.deleteNextCulinaryRecipe(this.nextCulinaryRecipeId);
+        } else {
+            this.culinaryRecipePresenter.addNextCulinaryRecipe(this.userId, this.culinaryRecipe.getCulinaryRecipeId());
+        }
+    }
+
+    @Override
+    public void onResultNextCulinaryRecipe(RequestHelper result) {
+        if (result.type == RequestType.OK) {
+            if (this.isNextCulinaryRecipe) {
+                Log.d(TAG, "Remove culinary recipe of next success.");
+                Toast.makeText(CulinaryRecipeDetailsActivity.this, "Receita removida às próximas com sucesso!", Toast.LENGTH_SHORT).show();
+            } else {
+                Log.d(TAG, "Add culinary recipe to next success.");
+                Toast.makeText(CulinaryRecipeDetailsActivity.this, "Receita adicionada às próximas com sucesso!", Toast.LENGTH_SHORT).show();
+            }
+
+            this.checkNextCulinaryRecipe();
+        } else
+        {
+            if (this.isNextCulinaryRecipe) {
+                Log.e(TAG, "Error on remove culinary recipe of next! Returned message: " + result.errorMessage);
+                Toast.makeText(CulinaryRecipeDetailsActivity.this, "Ocorreu um erro ao remover a receita das próximas! " + result.errorMessage, Toast.LENGTH_SHORT).show();
+            } else {
+                Log.e(TAG, "Error on add culinary recipe to next success.");
+                Toast.makeText(CulinaryRecipeDetailsActivity.this, "Ocorreu um erro ao adicionar a receita às próximas! " + result.errorMessage, Toast.LENGTH_SHORT).show();
             }
         }
     }

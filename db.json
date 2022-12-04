@@ -82,6 +82,11 @@
       "userId": 3,
       "culinaryRecipeId": 2,
       "id": 2
+    },
+    {
+      "userId": 3,
+      "culinaryRecipeId": 1,
+      "id": 3
     }
   ],
   "nextCulinaryRecipes": [
@@ -89,6 +94,16 @@
       "id": 1,
       "userId": 1,
       "culinaryRecipeId": 2
+    },
+    {
+      "userId": 3,
+      "culinaryRecipeId": 3,
+      "id": 2
+    },
+    {
+      "userId": 3,
+      "culinaryRecipeId": 1,
+      "id": 3
     }
   ]
 }

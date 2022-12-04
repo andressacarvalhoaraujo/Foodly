@@ -26,21 +26,24 @@ public class CulinaryRecipesAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         resetFilter();
     }
 
+    public void resetFilter() {
+        this.dataFilter = new ArrayList<>();
+        this.dataFilter.addAll(this.data);
+    }
+
     public void filterData(String filter) {
+        String title = "";
+        filter = filter.toLowerCase();
         this.dataFilter = new ArrayList<>();
 
         for (ICulinaryRecipeModel r : this.data) {
-            if(r.getTitle().contains(filter)) {
+            title = r.getTitle().toLowerCase();
+            if(title.contains(filter)) {
                 this.dataFilter.add(r);
             }
         }
 
         this.notifyDataSetChanged();
-    }
-
-    public void resetFilter() {
-        this.dataFilter = new ArrayList<>();
-        this.dataFilter.addAll(data);
     }
 
     public void getDataByUserId(int userId) {
@@ -51,6 +54,10 @@ public class CulinaryRecipesAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 this.dataFilter.add(r);
             }
         }
+
+        if (this.dataFilter.size() == 0)
+            this.dataFilter = this.data;
+
 
         this.notifyDataSetChanged();
     }

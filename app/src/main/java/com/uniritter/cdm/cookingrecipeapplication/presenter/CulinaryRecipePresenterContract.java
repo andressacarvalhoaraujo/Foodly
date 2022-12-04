@@ -6,6 +6,7 @@ import com.uniritter.cdm.cookingrecipeapplication.helper.RequestHelper;
 import com.uniritter.cdm.cookingrecipeapplication.model.ICulinaryRecipeModel;
 import com.uniritter.cdm.cookingrecipeapplication.model.IDifficultyLevelModel;
 import com.uniritter.cdm.cookingrecipeapplication.model.IFavoriteCulinaryRecipeModel;
+import com.uniritter.cdm.cookingrecipeapplication.model.INextCulinaryRecipeModel;
 
 import org.json.JSONException;
 
@@ -20,6 +21,10 @@ public class CulinaryRecipePresenterContract {
         void onCallFavoriteCulinaryRecipe() throws JSONException;
 
         void onResultFavoriteCulinaryRecipe(RequestHelper result);
+
+        void onCallNextCulinaryRecipe() throws JSONException;
+
+        void onResultNextCulinaryRecipe(RequestHelper result);
 
         Activity getActivity();
     }
@@ -37,8 +42,16 @@ public class CulinaryRecipePresenterContract {
 
         List<IFavoriteCulinaryRecipeModel> getFavoriteCulinaryRecipesByUserId(int userId);
 
+        INextCulinaryRecipeModel getNextCulinaryRecipeByUserIdAndCulinaryRecipeId(int userId, int culinaryRecipeId);
+
+        List<INextCulinaryRecipeModel> getNextCulinaryRecipesByUserId(int userId);
+
         void addFavoriteCulinaryRecipe(int userId, int culinaryRecipeId) throws JSONException;
 
         void deleteFavoriteCulinaryRecipe(int favoriteCulinaryRecipeId);
+
+        void addNextCulinaryRecipe(int userId, int culinaryRecipeId) throws JSONException;
+
+        void deleteNextCulinaryRecipe(int nextCulinaryRecipeId);
     }
 }
