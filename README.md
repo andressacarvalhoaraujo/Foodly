@@ -1,8 +1,8 @@
 <h1 align="center">
-    Foodly
+    Projeto final - Foodly
 </h1>
 
-## Project description
+## Descrição do projeto
 Aplicação implementada com [JSON Server](https://www.npmjs.com/package/json-server), que simula uma API, e retorna informações (usuários, níveis de dificuldade, receitas culinárias, receitas culinárias favoritas, receitas próximas culinárias, etc.), desenvolvida em Java e Android Studio, para a disciplina de Computação Móvel, do curso de Análise e Desenvolvimento de Sistemas.<br/>
 <h3 align="center">
     <a href="https://developer.android.com/studio#downloads">🔗 Android Studio</a>
@@ -15,7 +15,7 @@ Aplicação implementada com [JSON Server](https://www.npmjs.com/package/json-se
     <img src="https://img.shields.io/badge/platform-android%20studio-lightgrey" />
     <img src="https://img.shields.io/badge/last%20commit-december%202022-red" />
     <img src="https://img.shields.io/badge/English%20(US)-100%25-green" />
-    <img src="https://img.shields.io/badge/Portuguese%20(PT-BR)-100%25-green" />
+    <img src="https://img.shields.io/badge/Portuguese%20(PTBR)-100%25-green" />
 </h4>
 
 ---
@@ -24,16 +24,16 @@ Aplicação implementada com [JSON Server](https://www.npmjs.com/package/json-se
 #### ✅ Released
 ---
 
-## Index table
+## Índice
 <ul>
-  <li><a href="#project-description">Descrição do projeto</a></li>
-  <li><a href="#projet-status">Status do projeto</a></li>
-  <li><a href="#index-table">Índice</a></li>
+  <li><a href="#descrição-do-projeto">Descrição do projeto</a></li>
+  <li><a href="#status-do-projeto">Status do projeto</a></li>
+  <li><a href="#índice">Índice</a></li>
   <li><a href="#features">Features</a></li>
-  <li><a href="#application-demo-project-journey">Demo da aplicação e jornada do projeto</a></li>
-  <li><a href="#prerequisites">Pré-requisitos</a></li>
-  <li><a href="#technologies">Tecnologias</a></li>
-  <li><a href="#author">Autora</a></li>
+  <li><a href="#demo-da-aplicação-e-jornada-do-projeto">Demo da aplicação e jornada do projeto</a></li>
+  <li><a href="#pré-requisitos">Pré-requisitos</a></li>
+  <li><a href="#tecnologias">Tecnologias</a></li>
+  <li><a href="#autora">Autora</a></li>
 </ul> 
 
 ---
@@ -82,7 +82,7 @@ $ cd endereco_do_projeto
 $ json-server --host seu_ip db.json
 ```
 
-**Nota:** É necessário alterar o endereço de IP hard coded na aplicação para o de sua máquina.<br/>
+##### **Nota:** É necessário alterar o endereço de IP hard coded na aplicação para o de sua máquina.<br/>
 ---
 
 ## Tecnologias
