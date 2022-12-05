@@ -32,8 +32,6 @@ public class CulinaryRecipePresenterContract {
     public interface Presenter {
         List<ICulinaryRecipeModel> getAllCulinaryRecipes();
 
-        void addCulinaryRecipe(int userId, String title, String description, String ingredients, String preparationMode, int difficultyLevelId, int preparationTime, int yield, int totalCalories) throws JSONException;
-
         IDifficultyLevelModel getDifficultyLevelById(int difficultyLevelId);
 
         List<IDifficultyLevelModel> getAllDifficultyLevels();
@@ -46,11 +44,13 @@ public class CulinaryRecipePresenterContract {
 
         List<INextCulinaryRecipeModel> getNextCulinaryRecipesByUserId(int userId);
 
+        void addCulinaryRecipe(int userId, String title, String description, String ingredients, String preparationMode, int difficultyLevelId, int preparationTime, int yield, int totalCalories) throws JSONException;
+
         void addFavoriteCulinaryRecipe(int userId, int culinaryRecipeId) throws JSONException;
 
-        void deleteFavoriteCulinaryRecipe(int favoriteCulinaryRecipeId);
-
         void addNextCulinaryRecipe(int userId, int culinaryRecipeId) throws JSONException;
+
+        void deleteFavoriteCulinaryRecipe(int favoriteCulinaryRecipeId);
 
         void deleteNextCulinaryRecipe(int nextCulinaryRecipeId);
     }

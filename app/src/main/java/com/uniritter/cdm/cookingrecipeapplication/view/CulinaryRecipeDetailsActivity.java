@@ -40,11 +40,8 @@ public class CulinaryRecipeDetailsActivity extends AppCompatActivity implements 
     private CulinaryRecipePresenterContract.Presenter culinaryRecipePresenter;
     private ICulinaryRecipeModel culinaryRecipe;
     private List<ICulinaryRecipeModel> culinaryRecipes = new ArrayList<>();
-    private int userId;
-    private int favoriteCulinaryRecipeId;
-    private int nextCulinaryRecipeId;
-    private boolean isFavoriteCulinaryRecipe;
-    private boolean isNextCulinaryRecipe;
+    private int userId, favoriteCulinaryRecipeId, nextCulinaryRecipeId;
+    private boolean isFavoriteCulinaryRecipe, isNextCulinaryRecipe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,14 +77,14 @@ public class CulinaryRecipeDetailsActivity extends AppCompatActivity implements 
         preparationTimeText.setText(this.culinaryRecipe.getPreparationTime() + " min");
 
         TextView yieldText = findViewById(R.id.yieldText);
-        yieldText.setText(culinaryRecipe.getYield() + " porções");
+        yieldText.setText(this.culinaryRecipe.getYield() + " porções");
 
         TextView totalCaloriesText = findViewById(R.id.totalCaloriesText);
-        totalCaloriesText.setText(culinaryRecipe.getTotalCalories() + " calorias");
+        totalCaloriesText.setText(this.culinaryRecipe.getTotalCalories() + " calorias");
 
         LinearLayoutManager llmIngredients = new LinearLayoutManager(this);
         llmIngredients.setOrientation(LinearLayoutManager.VERTICAL);
-        IngredientsAdapter adapterIngredients = new IngredientsAdapter(culinaryRecipes);
+        IngredientsAdapter adapterIngredients = new IngredientsAdapter(this.culinaryRecipes);
         RecyclerView rvIngredients = (RecyclerView) findViewById(R.id.recyclerViewIngredients);
         rvIngredients.setHasFixedSize(true);
         rvIngredients.setAdapter(adapterIngredients);
@@ -95,7 +92,7 @@ public class CulinaryRecipeDetailsActivity extends AppCompatActivity implements 
 
         LinearLayoutManager llmPreparationMode = new LinearLayoutManager(this);
         llmPreparationMode.setOrientation(LinearLayoutManager.VERTICAL);
-        PreparationModeAdapter adapterPreparationMode = new PreparationModeAdapter(culinaryRecipes);
+        PreparationModeAdapter adapterPreparationMode = new PreparationModeAdapter(this.culinaryRecipes);
         RecyclerView rvPreparationMode = (RecyclerView) findViewById(R.id.recyclerViewPreparationMode);
         rvPreparationMode.setHasFixedSize(true);
         rvPreparationMode.setAdapter(adapterPreparationMode);
@@ -161,13 +158,13 @@ public class CulinaryRecipeDetailsActivity extends AppCompatActivity implements 
     }
 
     private void getData() {
-        IUserModel u = userPresenter.getUserById(this.culinaryRecipe.getUserId());
+        IUserModel u = this.userPresenter.getUserById(this.culinaryRecipe.getUserId());
 
         TextView byUserText = findViewById(R.id.byUserText);
         byUserText.setText("Por " + u.getUserName());
 
 
-        IDifficultyLevelModel dl = culinaryRecipePresenter.getDifficultyLevelById(this.culinaryRecipe.getDifficultyLevelId());
+        IDifficultyLevelModel dl = this.culinaryRecipePresenter.getDifficultyLevelById(this.culinaryRecipe.getDifficultyLevelId());
 
         char fl[] = dl.getDifficultyLevelName().toCharArray();
         fl[0] = Character.toLowerCase(fl[0]);

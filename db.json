@@ -74,19 +74,19 @@
   ],
   "favoriteCulinaryRecipes": [
     {
-      "id": 1,
-      "userId": 1,
-      "culinaryRecipeId": 1
-    },
-    {
       "userId": 3,
-      "culinaryRecipeId": 2,
+      "culinaryRecipeId": 1,
       "id": 2
     },
     {
       "userId": 3,
-      "culinaryRecipeId": 1,
+      "culinaryRecipeId": 2,
       "id": 3
+    },
+    {
+      "userId": 1,
+      "culinaryRecipeId": 2,
+      "id": 4
     }
   ],
   "nextCulinaryRecipes": [
@@ -104,6 +104,11 @@
       "userId": 3,
       "culinaryRecipeId": 1,
       "id": 3
+    },
+    {
+      "userId": 1,
+      "culinaryRecipeId": 3,
+      "id": 4
     }
   ]
 }

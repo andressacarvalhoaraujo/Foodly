@@ -9,9 +9,9 @@
 
     <EditText
         android:id="@+id/search"
-        android:layout_width="265dp"
+        android:layout_width="210dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="22dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/edit_text_custom_1"
@@ -26,11 +26,21 @@
         android:textColorHint="#93CCFB" />
 
     <ImageButton
+        android:id="@+id/searchBtn"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="right"
+        android:layout_marginStart="230dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_custom_2"
+        android:backgroundTint="#FFFFFF" />
+
+    <ImageButton
         android:id="@+id/signOut"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_gravity="right"
-        android:layout_marginStart="305dp"
+        android:layout_marginStart="315dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/button_custom_2"
         android:backgroundTint="#FFFFFF"
@@ -43,7 +53,6 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="100dp"
         android:layout_marginBottom="20dp"
-        android:text="Olá, Cuzilda!"
         android:textColor="#FFFFFF"
         android:textSize="20dp"
         android:textStyle="bold" />
@@ -69,6 +78,32 @@
             android:backgroundTint="#1F98C4"
             app:cornerRadius="40dp"
             app:icon="@drawable/ic_baseline_book_24"
+            app:iconGravity="textTop"
+            app:iconTint="#FFFFFF"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/favoriteCulinaryRecipes"
+            android:layout_width="60dp"
+            android:layout_height="70dp"
+            android:layout_gravity="left"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#1F98C4"
+            app:cornerRadius="40dp"
+            app:icon="@drawable/ic_baseline_favorite_24_2"
+            app:iconGravity="textTop"
+            app:iconTint="#FFFFFF"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/nextCulinaryRecipes"
+            android:layout_width="60dp"
+            android:layout_height="70dp"
+            android:layout_gravity="right"
+            android:layout_marginEnd="115dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#1F98C4"
+            app:cornerRadius="40dp"
+            app:icon="@drawable/ic_baseline_fast_forward_24_2"
             app:iconGravity="textTop"
             app:iconTint="#FFFFFF"/>
 

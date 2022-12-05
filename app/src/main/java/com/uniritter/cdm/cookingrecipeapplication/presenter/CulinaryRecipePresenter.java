@@ -35,11 +35,6 @@ public class CulinaryRecipePresenter implements CulinaryRecipePresenterContract.
     }
 
     @Override
-    public void addCulinaryRecipe(int userId, String title, String description, String ingredients, String preparationMode, int difficultyLevelId, int preparationTime, int yield, int totalCalories) throws JSONException {
-        this.culinaryRecipeRepository.addCulinaryRecipe(userId, title, description, ingredients, preparationMode, difficultyLevelId, preparationTime, yield, totalCalories, this);
-    }
-
-    @Override
     public IDifficultyLevelModel getDifficultyLevelById(int difficultyLevelId) {
         return this.difficultyLevelRepository.getDifficultyLevelById(difficultyLevelId);
     }
@@ -70,18 +65,23 @@ public class CulinaryRecipePresenter implements CulinaryRecipePresenterContract.
     }
 
     @Override
+    public void addCulinaryRecipe(int userId, String title, String description, String ingredients, String preparationMode, int difficultyLevelId, int preparationTime, int yield, int totalCalories) throws JSONException {
+        this.culinaryRecipeRepository.addCulinaryRecipe(userId, title, description, ingredients, preparationMode, difficultyLevelId, preparationTime, yield, totalCalories, this);
+    }
+
+    @Override
     public void addFavoriteCulinaryRecipe(int userId, int culinaryRecipeId) throws JSONException {
         this.favoriteCulinaryRecipeRepository.addFavoriteCulinaryRecipe(userId, culinaryRecipeId, this);
     }
 
     @Override
-    public void deleteFavoriteCulinaryRecipe(int favoriteCulinaryRecipeId) {
-        this.favoriteCulinaryRecipeRepository.deleteFavoriteCulinaryRecipe(favoriteCulinaryRecipeId, this);
+    public void addNextCulinaryRecipe(int userId, int culinaryRecipeId) throws JSONException {
+        this.nextCulinaryRecipeRepository.addNextCulinaryRecipe(userId, culinaryRecipeId, this);
     }
 
     @Override
-    public void addNextCulinaryRecipe(int userId, int culinaryRecipeId) throws JSONException {
-        this.nextCulinaryRecipeRepository.addNextCulinaryRecipe(userId, culinaryRecipeId, this);
+    public void deleteFavoriteCulinaryRecipe(int favoriteCulinaryRecipeId) {
+        this.favoriteCulinaryRecipeRepository.deleteFavoriteCulinaryRecipe(favoriteCulinaryRecipeId, this);
     }
 
     @Override

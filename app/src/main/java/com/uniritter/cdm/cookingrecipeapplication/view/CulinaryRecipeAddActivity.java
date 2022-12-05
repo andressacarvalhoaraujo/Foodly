@@ -82,8 +82,8 @@ public class CulinaryRecipeAddActivity extends AppCompatActivity implements Culi
         });
 
 
-        btnCreate = findViewById(R.id.create);
-        btnCreate.setOnClickListener(view -> {
+        this.btnCreate = findViewById(R.id.create);
+        this.btnCreate.setOnClickListener(view -> {
             this.title = ((EditText) findViewById(R.id.title)).getText().toString();
             this.description = ((EditText) findViewById(R.id.description)).getText().toString();
             this.ingredients = ((EditText) findViewById(R.id.ingredients)).getText().toString();
@@ -95,8 +95,8 @@ public class CulinaryRecipeAddActivity extends AppCompatActivity implements Culi
             String tc = ((EditText) findViewById(R.id.totalCalories)).getText().toString();
             this.totalCalories = tc != null && !TextUtils.isEmpty(tc) ? Integer.parseInt(tc) : 0;
 
-            btnCreate.setText("Aguarde...");
-            btnCreate.setEnabled(false);
+            this.btnCreate.setText("Aguarde...");
+            this.btnCreate.setEnabled(false);
 
             try {
                 onCallCulinaryRecipe();
@@ -110,7 +110,7 @@ public class CulinaryRecipeAddActivity extends AppCompatActivity implements Culi
 
     @Override
     public void onCallCulinaryRecipe() throws JSONException {
-        presenter.addCulinaryRecipe(this.userId, this.title, this.description,
+        this.presenter.addCulinaryRecipe(this.userId, this.title, this.description,
                 this.ingredients, this.preparationMode, this.difficultyLevelId,
                 this.preparationTime, this.yield, this.totalCalories);
     }
@@ -127,8 +127,8 @@ public class CulinaryRecipeAddActivity extends AppCompatActivity implements Culi
             }, 5000);
         } else
         {
-            btnCreate.setText("Cadastrar");
-            btnCreate.setEnabled(true);
+            this.btnCreate.setText("Cadastrar");
+            this.btnCreate.setEnabled(true);
 
             Log.e(TAG, "Error on add culinary recipe! Returned message: " + result.errorMessage);
             Toast.makeText(CulinaryRecipeAddActivity.this, "Ocorreu um erro ao cadastrar a receita! " + result.errorMessage, Toast.LENGTH_SHORT).show();
@@ -159,7 +159,7 @@ public class CulinaryRecipeAddActivity extends AppCompatActivity implements Culi
         ArrayList<String> dln = new ArrayList<>();
         dln.add("Selecione a dificuldade");
 
-        List<IDifficultyLevelModel> d = presenter.getAllDifficultyLevels();
+        List<IDifficultyLevelModel> d = this.presenter.getAllDifficultyLevels();
 
         for (IDifficultyLevelModel dl : d) {
             dln.add(dl.getDifficultyLevelName());

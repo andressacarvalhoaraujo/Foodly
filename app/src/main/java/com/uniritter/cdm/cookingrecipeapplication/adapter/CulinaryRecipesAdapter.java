@@ -20,6 +20,7 @@ import java.util.List;
 public class CulinaryRecipesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<ICulinaryRecipeModel> data;
     private List<ICulinaryRecipeModel> dataFilter;
+    private List<ICulinaryRecipeModel> dataState;
 
     public CulinaryRecipesAdapter(List<ICulinaryRecipeModel> data) {
         this.data = data;
@@ -27,27 +28,60 @@ public class CulinaryRecipesAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     }
 
     public void resetFilter() {
-        this.dataFilter = new ArrayList<>();
-        this.dataFilter.addAll(this.data);
+        this.dataFilter = this.data;
     }
 
-    public void filterData(String filter) {
-        String title = "";
-        filter = filter.toLowerCase();
-        this.dataFilter = new ArrayList<>();
-
-        for (ICulinaryRecipeModel r : this.data) {
-            title = r.getTitle().toLowerCase();
-            if(title.contains(filter)) {
-                this.dataFilter.add(r);
-            }
-        }
+    public void removeFilter() {
+        resetFilter();
 
         this.notifyDataSetChanged();
     }
 
-    public void getDataByUserId(int userId) {
+    public boolean filterData(String filter, boolean isDataFiltered) {
+        String title = "";
+        filter = filter.toLowerCase();
+        boolean userHasAnyCulinaryRecipe = false;
+
+        if (isDataFiltered && this.dataState != null && this.dataState.size() > 0) {
+            List<ICulinaryRecipeModel> df = this.dataState;
+            this.dataFilter = new ArrayList<>();
+
+            for (ICulinaryRecipeModel r : df) {
+                title = r.getTitle().toLowerCase();
+                if (title.contains(filter)) {
+                    this.dataFilter.add(r);
+                }
+            }
+        } else {
+            this.dataFilter = new ArrayList<>();
+
+            for (ICulinaryRecipeModel r : this.data) {
+                title = r.getTitle().toLowerCase();
+                if (title.contains(filter)) {
+                    this.dataFilter.add(r);
+                }
+            }
+        }
+
+        if (this.dataFilter.size() == 0 && !isDataFiltered) {
+            this.dataFilter = this.data;
+        } else if (this.dataFilter.size() == 0 && isDataFiltered && this.dataState != null && this.dataState.size() > 0) {
+            this.dataFilter = this.dataState;
+
+            userHasAnyCulinaryRecipe = false;
+        } else {
+            userHasAnyCulinaryRecipe = true;
+        }
+
+
+        this.notifyDataSetChanged();
+
+        return userHasAnyCulinaryRecipe;
+    }
+
+    public boolean getDataByUserId(int userId) {
         this.dataFilter = new ArrayList<>();
+        boolean userHasAnyCulinaryRecipe = false;
 
         for (ICulinaryRecipeModel r : this.data) {
             if(r.getUserId() == userId) {
@@ -55,9 +89,37 @@ public class CulinaryRecipesAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             }
         }
 
+        this.dataState = this.dataFilter;
+
         if (this.dataFilter.size() == 0)
             this.dataFilter = this.data;
+        else
+            userHasAnyCulinaryRecipe = true;
 
+        this.notifyDataSetChanged();
+
+        return userHasAnyCulinaryRecipe;
+    }
+
+    public void getDataByCulinaryRecipeId(ArrayList<Integer> culinaryRecipeIds) {
+        this.dataFilter = new ArrayList<>();
+
+        if (culinaryRecipeIds.size() > 0) {
+            for (int i = 0; i < culinaryRecipeIds.size(); i++) {
+
+                for (ICulinaryRecipeModel r : this.data) {
+                    if(r.getCulinaryRecipeId() == culinaryRecipeIds.get(i)) {
+                        this.dataFilter.add(r);
+                    }
+                }
+
+            }
+        }
+
+        this.dataState = this.dataFilter;
+
+        if (this.dataFilter.size() == 0)
+            this.dataFilter = this.data;
 
         this.notifyDataSetChanged();
     }
