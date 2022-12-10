@@ -30,7 +30,7 @@ Aplicação implementada com [JSON Server](https://www.npmjs.com/package/json-se
   <li><a href="#status-do-projeto">Status do projeto</a></li>
   <li><a href="#índice">Índice</a></li>
   <li><a href="#features">Features</a></li>
-  <li><a href="#demo-da-aplicação-e-jornada-do-projeto">Demo da aplicação e jornada do projeto</a></li>
+  <li><a href="#a-jornada-do-projeto-a-apresentação-do-código-e-a-demonstração-da-aplicação">A jornada do projeto, a apresentação do código, e a demonstração da aplicação</a></li>
   <li><a href="#pré-requisitos">Pré-requisitos</a></li>
   <li><a href="#tecnologias">Tecnologias</a></li>
   <li><a href="#autora">Autora</a></li>
@@ -51,9 +51,9 @@ Aplicação implementada com [JSON Server](https://www.npmjs.com/package/json-se
 - [x] Listagem de próximas receitas culinárias do usuário
 ---
 
-## Demo da aplicação e jornada do projeto
+## A jornada do projeto, a apresentação do código, e a demonstração da aplicação
 <h3 align="center">
-    <a href="https://youtube.com/playlist?list=PLgTjChSSX8C_OI97MWIUsQ08CM-1Ujb2O">🔗 YouTube</a>
+    <a href="https://youtube.com/playlist?list=PLgTjChSSX8C_I8D4fLvUPGLGgM4ydL2oK">🔗 YouTube</a>
 </h3>
 
 ---
